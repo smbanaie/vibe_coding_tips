@@ -80,87 +80,17 @@ This guideline that inspired from [this twitter thread](https://x.com/0xDesigner
 
 ## 🔄 Full 9-Step Project Workflow
 
-Here’s the mandatory workflow every project follows:
+1. **State the Problem Clearly**
+   
+   - When starting a new task, write a clear "Background and Motivation" in `.cursor/scratchpad.md`.
+   
+   - Ask the agent for its thoughts before proceeding.
 
-### Step 1: Receive Initial Request
-- Human user provides a new task or change request.
-- Update the **Background and Motivation** immediately.
+2. **Paste Cursor Rules**
+   
+   - Always ensure these rules are visible to the agent (you can paste them in the initial context if needed or in the Rules section of Cursor settings).
 
-### Step 2: Planner Mode — Deep Thinking
-- Analyze the task deeply.
-- Identify challenges and risks.
-- Break it down into small steps.
-- Update **Key Challenges** and **High-level Task Breakdown**.
-
-### Step 3: Define Success Criteria
-- Every task must have clear, verifiable success conditions.
-
-### Step 4: Executor Mode — Single Task Execution
-- Pick the **next uncompleted** task.
-- Implement only that one step.
-- Use Test-Driven Development (TDD) where possible.
-
-### Step 5: Update Project Status
-- Mark completed tasks in **Project Status Board** (`- [x]`).
-- Document any blockers, questions, or findings under **Executor’s Feedback**.
-
-### Step 6: Communicate Completion
-- Executor must **not self-declare** completion.
-- Report completion based on success criteria and tests.
-- Ask the human (Planner) for confirmation.
-
-### Step 7: Planner Review
-- Human (Planner) reviews the implementation.
-- If the criteria are satisfied, approve; otherwise, request changes.
-
-### Step 8: Lessons Learned
-- Document mistakes, fixes, tricks in the **Lessons** section to prevent repeated errors.
-
-### Step 9: Continue or Conclude
-- Continue the cycle until the entire project is complete or explicitly paused.
-
----
-
-## 🛠 Workflow Guidelines
-
-- Always update **Background and Motivation** when starting a new project or task.
-- Planner Mode = Update **Key Challenges** and **High-level Task Breakdown**.
-- Executor Mode = Execute one task at a time, using TDD principles.
-- After completion, update **Project Status Board** and **Executor’s Feedback**.
-- Test thoroughly. Fix bugs immediately before moving on.
-- The Planner must cross-verify completed tasks before marking them complete.
-- Communicate through updates to `.cursor/scratchpad.md`.
-
----
-
-## 🧩 Rules and Additional Reminders
-
-- Only the Planner can declare a task complete, **not** the Executor.
-- Avoid rewriting entire documents unless explicitly necessary.
-- Avoid deleting others' notes — instead, append or mark as outdated.
-- When external research is needed, notify the human Planner and document both the purpose and findings.
-- Before executing large or critical changes, Executors must notify the Planner via **Executor's Feedback**.
-- Never guess — if unsure about something, **say so clearly** and ask for clarification.
-- Document anything reusable like versions, common issues, or configurations in the **Lessons** section.
-- If vulnerabilities appear (e.g., `npm audit`), resolve them before proceeding.
-- Always ask for confirmation before using potentially dangerous commands like `git --force`.
-- Include helpful debugging output in programs for easier troubleshooting.
-
----
-
-## 📚 User-Specified Lessons to Always Remember
-
-- Include debugging info in program outputs.
-- Read `.cursor/scratchpad.md` **before editing**.
-- Resolve vulnerabilities (`npm audit`) before moving forward.
-- Always ask before using `-force` with git commands.
-
----
-
-#### Cursor Rules
-you can copy&paste this text in Cursor Settings -> Rules Section 
-
-```yaml
+   ```
 # Instructions
 
 You are a multi-agent system coordinator, playing two roles in this environment: Planner and Executor. You will decide the next steps based on the current state in the `.cursor/scratchpad.md` file. Your goal is to complete the user's final requirements.
@@ -212,11 +142,120 @@ Please note:
 - Read the file before you try to edit it.
 - If there are vulnerabilities that appear in the terminal, run npm audit before proceeding
 - Always ask before using the -force git command
-```
+   ```
 
-# ✅ Final Thought
+3. **Gather API Docs**
+   
+   - Use `@web` tag to pull the most up-to-date docs for any external services or APIs.
+   
+   - After gathering, the agent must create `.md` reference files for each API being used.
+   
+   - This prevents outdated information from causing mistakes later.
 
-**Plan deeply. Execute carefully. Communicate continuously. Document everything.**
+4. **Create the Plan First**
+   
+   - The agent must always create a High-Level Task Breakdown before starting any coding.
+   
+   - Each task must have:
+     
+     - Clear success criteria
+     
+     - Estimated effort
+     
+     - Known dependencies
+   
+   - Get human user approval before coding starts.
 
-Respecting this structure transforms chaotic AI-assisted coding into true, sustainable collaboration.
+   - You should use a thinking or reasoning model when asking the agent to use Planner mode. This gives it more time to deliberate and think things through.
 
+5. **Flip to Executor Mode**
+   
+   - After plan approval, flip the agent to Executor mode.
+   
+   - Tell the agent: "Be an Executor and begin implementing."
+
+   - Switch back to normal 3.7 Sonnet and just write "be an Executor and begin implementing." The rules you pasted earlier instruct it grab one task at a time, write code, run tests, and update the plan when it's finished.
+
+6. **Track Progress**
+   
+   - Use the "Project Status Board" and "Executor's Feedback or Assistance Requests" sections to track work.
+   
+   - After finishing a task, the Executor must:
+     
+     - Mark it complete based on success criteria
+     
+     - Ask the Planner to verify
+
+7. **Debug Smartly**
+   
+   - When an error appears:
+     
+     - **Tell the agent "Check the console"** rather than describing the error manually.
+     
+     - Read and diagnose the exact error message, not guesses.
+
+8. **Revert Changes Often**
+   
+   - If stuck, **don't wrestle with broken code**.
+   
+   - Instead, roll back to the last known good checkpoint.
+   
+   - Replan based on new insights instead of trying to patch endlessly.
+
+9. **Restart When Necessary**
+   
+   - If progress is totally blocked, **restart from step 1**.
+   
+   - Hone in on a smaller scope.
+   
+   - Redefine a simpler problem.
+   
+   - Expect multiple resets. This is part of building correctly, not a failure.
+
+---
+
+## 🛠 Workflow Guidelines
+
+- Always update **Background and Motivation** when starting a new project or task.
+- Planner Mode = Update **Key Challenges** and **High-level Task Breakdown**.
+- Executor Mode = Execute one task at a time, using TDD principles.
+- After completion, update **Project Status Board** and **Executor’s Feedback**.
+- Test thoroughly. Fix bugs immediately before moving on.
+- The Planner must cross-verify completed tasks before marking them complete.
+- Communicate through updates to `.cursor/scratchpad.md`.
+
+---
+
+## 🧩 Rules and Additional Reminders
+
+- Only the Planner can declare a task complete, **not** the Executor.
+- Avoid rewriting entire documents unless explicitly necessary.
+- Avoid deleting others' notes — instead, append or mark as outdated.
+- When external research is needed, notify the human Planner and document both the purpose and findings.
+- Before executing large or critical changes, Executors must notify the Planner via **Executor's Feedback**.
+- Never guess — if unsure about something, **say so clearly** and ask for clarification.
+- Document anything reusable like versions, common issues, or configurations in the **Lessons** section.
+- If vulnerabilities appear (e.g., `npm audit`), resolve them before proceeding.
+- Always ask for confirmation before using potentially dangerous commands like `git --force`.
+- Include helpful debugging output in programs for easier troubleshooting.
+
+---
+
+# Quick Summary of Agent Behavior
+
+✅ State the problem clearly  
+✅ Always plan first, execute second  
+✅ Gather fresh API docs using `@web`  
+✅ Check the console for errors  
+✅ Revert broken work early, don't wrestle  
+✅ Restart small and simple if stuck  
+✅ Stay in tight Planner ↔ Executor loops  
+✅ Record lessons and prevent repeated mistakes
+
+---
+
+# Final Note
+
+> Vibe coding is real.  
+> Real coding demands structure.  
+> **Trust the rhythm: plan → execute → plan → fix → plan → execute.**
