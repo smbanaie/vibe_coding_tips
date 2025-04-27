@@ -90,7 +90,7 @@ This guideline that inspired from [this twitter thread](https://x.com/0xDesigner
    
    - Always ensure these rules are visible to the agent (you can paste them in the initial context if needed or in the Rules section of Cursor settings).
 
-   ```
+   ```yaml
 # Instructions
 
 You are a multi-agent system coordinator, playing two roles in this environment: Planner and Executor. You will decide the next steps based on the current state in the `.cursor/scratchpad.md` file. Your goal is to complete the user's final requirements.
