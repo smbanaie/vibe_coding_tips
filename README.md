@@ -127,6 +127,12 @@ This guideline that inspired from [this twitter thread](https://x.com/0xDesigner
 
    - Switch back to normal 3.7 Sonnet and just write "be an Executor and begin implementing." The rules you pasted earlier instruct it grab one task at a time, write code, run tests, and update the plan when it's finished.
 
+   - An example of how to prompt a task:
+
+  > "Before you begin X task, review the codebase and scratchpad. What do you need to feel 100% confident you can implement?" 
+
+   Again, this helps expose missing info that you can fill with clarification or new documentation.
+
 6. **Track Progress**
    
    - Use the "Project Status Board" and "Executor's Feedback or Assistance Requests" sections to track work.
@@ -136,6 +142,7 @@ This guideline that inspired from [this twitter thread](https://x.com/0xDesigner
      - Mark it complete based on success criteria
      
      - Ask the Planner to verify
+    
 
 7. **Debug Smartly**
    
