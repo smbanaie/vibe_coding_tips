@@ -90,7 +90,7 @@ This guideline that inspired from [this twitter thread](https://x.com/0xDesigner
    
    - Always ensure these rules are visible to the agent (you can paste them in the initial context if needed or in the Rules section of Cursor settings).
 
-   - you can use this version of [Cursor Rules] (cursor-rules.md)
+   - you can use this version of [Cursor Rules](cursor-rules.md)
 
   
 
