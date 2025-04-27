@@ -43,6 +43,7 @@ This guideline that inspired from [this twitter thread](https://x.com/0xDesigner
     - Create or update **High-level Task Breakdown**.
     - Review and supplement **Project Status Board**.
 
+![ScratchPad](images/scratchpad.png)
 ---
 
 ### 2. Executor 🛠️
